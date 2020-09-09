@@ -1,4 +1,4 @@
-const data = {
+const seed = {
     tasks: {
         'task-1': {id: 'task-1', info: 'Work on Project'},
         'task-2': {id: 'task-1', info: 'Learn some JS'},
