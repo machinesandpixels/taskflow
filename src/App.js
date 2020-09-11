@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from "react";
-import seed from './seed';
+import '@atlaskit/css-reset';
+import Column from "./components/Column";
 
 function App() {
 
-  const [state] = useState(seed);
   const BASE_URL = 'https://api.pexels.com/v1/';
   fetch(`${BASE_URL}search?query=nature&per_page=1`, {
     headers: {
@@ -18,8 +18,11 @@ function App() {
   // style={{backgroundImage: `url(${BASE_URL})`}}
   
   return (
+  
+    
     <div  className="App">
      <h1>Taskflow</h1>
+     <Column />
     </div>
   );
 }

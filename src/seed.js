@@ -11,7 +11,7 @@ const seed = {
             taskIds: ['task1', 'task2', 'task3']
         }
     },
-    columnOrder: ['column1']
+    columnOrder: ['column-1']
 }
 
 export default seed;

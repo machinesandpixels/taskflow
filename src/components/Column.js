@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
+import seed from '../seed';
 
 function Column() {
+
+    const [state, setState] = useState(() => seed);
+    // currentState, updateState
     return (
-        <div>
-            <h1>Column</h1>
-        </div>
+        state.columnOrder.map(columnId =>{
+            const column = state.columns[columnId]
+            const tasks = column.taskIds.map(taskId => state.tasks[taskId]);
+            return column.title;
+          })
     )
 }
 
