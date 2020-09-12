@@ -16,6 +16,8 @@ function App() {
   
   // search?query=nature&per_page=1
   // style={{backgroundImage: `url(${BASE_URL})`}}
+
+  
   
   return (
   
