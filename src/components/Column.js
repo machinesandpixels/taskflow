@@ -23,12 +23,8 @@ function Column() {
         const tasks = column.taskIds.map(taskId => state.tasks[taskId]);
         return title = column.title;
       })
+      
     return (
-        // state.columnOrder.map(columnId =>{
-        //     const column = state.columns[columnId]
-        //     const tasks = column.taskIds.map(taskId => state.tasks[taskId]);
-        //     return column.title;
-        //   })
     <Container>
         <Title>{ title }</Title>
         <TasksList>Tasks</TasksList>
