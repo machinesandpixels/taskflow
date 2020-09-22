@@ -6,6 +6,23 @@ function Column() {
 
     const [state, setState] = useState(() => seed);
     // currentState, updateState
+    
+    let background = '';
+    const BASE_URL = 'https://api.pexels.com/v1/';
+    fetch(`${BASE_URL}search?query=nature&per_page=1`, {
+      headers: {
+        Authorization: `${process.env.REACT_APP_API_KEY}`
+      }
+    })
+      .then(res => res.json())
+      .then(json => json.photos.map(img => {
+        background = img.src.large;
+        console.log(background);
+        return background;
+      }));
+      const Background = styled.div`
+    background-image: url(${background});
+    `;
     const Container = styled.div`
     margin: 8px;
     border: 2px solid lightgrey;
@@ -26,8 +43,10 @@ function Column() {
       
     return (
     <Container>
-        <Title>{ title }</Title>
-        <TasksList>Tasks</TasksList>
+        <Background>
+            <Title>{ title }</Title>
+            <TasksList>Tasks</TasksList>
+        </Background>
     </Container>
     )
 }
