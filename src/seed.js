@@ -1,4 +1,4 @@
-const data = {
+const seed = {
     tasks: {
         'task-1': {id: 'task-1', info: 'Work on Project'},
         'task-2': {id: 'task-1', info: 'Learn some JS'},
@@ -11,7 +11,7 @@ const data = {
             taskIds: ['task1', 'task2', 'task3']
         }
     },
-    columnOrder: ['column1']
+    columnOrder: ['column-1']
 }
 
 export default seed;
