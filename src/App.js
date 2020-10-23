@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '@atlaskit/css-reset';
 import Seed from './seed';
 import Column from "./components/Column";
+import Header from "./layout/Header";
 
 class App extends Component {
   
@@ -27,10 +29,11 @@ class App extends Component {
   // style={{backgroundImage: `url(${BASE_URL})`}}
   // style={{backgroundImage: `url(${background})`}}
   return (
-    <div className="App">
+    <Router>
+      <Header />
      <h1>Taskflow</h1>
      <Column />
-    </div>
+    </Router>
   );
   }
 }
