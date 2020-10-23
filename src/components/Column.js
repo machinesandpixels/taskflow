@@ -20,7 +20,8 @@ function Column() {
         console.log(background);
         return background;
       }));
-      const Background = styled.div`
+      
+    const Background = styled.div`
     background-image: url(${background});
     `;
     const Container = styled.div`
