@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
-function Task() {
+const Container = styled.div`
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 8px;
+`;
+
+class Task extends Component {
+  render() {
     return (
-        <div>
-            
-        </div>
+      <Container>
+        { this.props.task.info }
+      </Container>
     )
+  }
 }
 
 export default Task;
