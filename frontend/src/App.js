@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '@atlaskit/css-reset';
 import Column from "./components/Column";
 import Header from "./layout/Header";
+import { DragDropContext } from 'react-beautiful-dnd';
 import seed from './seed';
+
 const BASE_URL = 'https://api.pexels.com/v1/';
 
 class App extends Component {
@@ -41,7 +43,13 @@ class App extends Component {
   return (
     <Router>
       <Header />
+      <DragDropContext
+          onDragStart
+          onDragUpdate
+          onDragEnd
+      />
       <Column key={column.id} column={column} tasks={tasks} />
+      <DragDropContext/>
     </Router>
   );
   }

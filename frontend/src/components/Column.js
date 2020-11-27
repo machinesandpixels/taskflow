@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Droppable } from 'react-beautiful-dnd';
 import Task from './Task';
 import styled from 'styled-components';
 
@@ -19,13 +20,17 @@ padding: 8px;
 class Column extends Component {
     
     render() {
-        return( 
+        return(
+            
             <Container>
                 <Title>{ this.props.column.title }</Title>
-                <TasksList>{ this.props.tasks.map(task => 
-                    <Task key={task.id} task={task} />) }
-                </TasksList>
+                {/* <Droppable droppableId={this.props.column.id}> */}
+                    <TasksList>{ this.props.tasks.map(task => 
+                        <Task key={task.id} task={task} />) }
+                    </TasksList>
+                {/* </Droppable> */}
             </Container>
+
         );
     }
 }

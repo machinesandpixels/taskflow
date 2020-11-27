@@ -4,10 +4,10 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const Header = () => {
     return (
-        <Navbar bg="light" expand="lg" collapseOnSelect>
+        <Navbar bg="primary" expand="lg" collapseOnSelect>
         <LinkContainer to="/">
         <Navbar.Brand>
-            Taskflow
+            <h3>Taskflow</h3>
         </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
