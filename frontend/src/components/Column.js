@@ -21,14 +21,22 @@ class Column extends Component {
     
     render() {
         return(
-            
             <Container>
                 <Title>{ this.props.column.title }</Title>
-                {/* <Droppable droppableId={this.props.column.id}> */}
-                    <TasksList>{ this.props.tasks.map(task => 
-                        <Task key={task.id} task={task} />) }
-                    </TasksList>
-                {/* </Droppable> */}
+                <Droppable droppableId={this.props.column.id}>
+                    {(provided) => {
+                        <TasksList
+                            innerRef={ provided.innerRef }
+                        {...provided.droppableProps}
+                        >
+                            { 
+                            this.props.tasks.map(task => 
+                            <Task key={task.id} task={task} />) 
+                            }
+                            { provided.placeholder }
+                        </TasksList>
+                    }}
+                </Droppable>
             </Container>
 
         );

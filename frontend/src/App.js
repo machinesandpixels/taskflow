@@ -26,6 +26,11 @@ class App extends Component {
   //     }));
     
   // }
+
+  onDragEnd = order => {
+    // Updates the reordering of our column
+    
+  }
   
   render() {
   
@@ -46,7 +51,7 @@ class App extends Component {
       <DragDropContext
           onDragStart
           onDragUpdate
-          onDragEnd
+          onDragEnd={ this.onDragEnd }
       />
       <Column key={column.id} column={column} tasks={tasks} />
       <DragDropContext/>

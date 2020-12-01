@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -11,9 +12,11 @@ const Container = styled.div`
 class Task extends Component {
   render() {
     return (
-      <Container>
-        { this.props.task.info }
-      </Container>
+      <Draggable>
+        <Container>
+          { this.props.task.info }
+        </Container>
+      </Draggable>
     )
   }
 }
