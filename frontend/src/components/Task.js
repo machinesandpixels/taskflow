@@ -12,10 +12,19 @@ const Container = styled.div`
 class Task extends Component {
   render() {
     return (
-      <Draggable>
-        <Container>
-          { this.props.task.info }
-        </Container>
+      <Draggable
+        draggableId={this.props.task.id}
+        index={this.props.index}
+        >
+          { (provided) => (
+            <Container
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              innerRef={ provided.innerRef }
+            >
+              { this.props.task.info }
+            </Container>
+          ) }
       </Draggable>
     )
   }

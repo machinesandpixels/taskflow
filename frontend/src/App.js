@@ -29,6 +29,7 @@ class App extends Component {
 
   onDragEnd = order => {
     // Updates the reordering of our column
+    console.log('drag');
     
   }
   
@@ -49,8 +50,8 @@ class App extends Component {
     <Router>
       <Header />
       <DragDropContext
-          onDragStart
-          onDragUpdate
+          // onDragStart
+          // onDragUpdate
           onDragEnd={ this.onDragEnd }
       />
       <Column key={column.id} column={column} tasks={tasks} />
