@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '@atlaskit/css-reset';
+import styled from 'styled-components';
 import Column from "./components/Column";
 import Header from "./layout/Header";
 import { DragDropContext } from 'react-beautiful-dnd';
 import seed from './seed';
 
 const BASE_URL = 'https://api.pexels.com/v1/';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+`;
 
 class App extends Component {
 
@@ -33,27 +40,54 @@ class App extends Component {
    
     if (!destination) return;
 
-    const column = this.state.columns[source.droppableId];
-  
-    const newTaskIds = Array.from(column.taskIds);
-    newTaskIds.splice(source.index,1);
-    newTaskIds.splice(destination.index,0,draggableId);
+    const start = this.state.columns[source.droppableId];
+    const end = this.state.columns[destination.droppableId];
+    
+    if (start === end){
+      const newTaskIds = Array.from(start.taskIds);
+      newTaskIds.splice(source.index,1);
+      newTaskIds.splice(destination.index,0,draggableId);
 
-    const newColumn = {
-      ...column,
-      taskIds: newTaskIds,
-    };
+      const newColumn = {
+        ...start,
+        taskIds: newTaskIds,
+      };
 
+      const newState = {
+        ...this.state,
+        columns: {
+          ...this.state.columns,
+          [newColumn.id]: newColumn,
+        }
+      };
+      return this.setState(newState);
+    }
+    
+    // Moving from one column to the other
+    const startTaskIds = Array.from(start.taskIds);
+    startTaskIds.splice(source.index,1);
+
+    const newStart = {
+      ...start,
+      taskIds: startTaskIds,
+    }
+
+    const endTaskIds = Array.from(end.taskIds);
+    endTaskIds.splice(destination.index,0,draggableId);
+
+    const newEnd = {
+      ...end,
+      taskIds: endTaskIds,
+    }
     const newState = {
       ...this.state,
       columns: {
         ...this.state.columns,
-        [newColumn.id]: newColumn,
+        [newStart.id]: newStart,
+        [newEnd.id]: newEnd,
       }
     };
-
     this.setState(newState);
-    
   }
   
   render() {
@@ -67,6 +101,7 @@ class App extends Component {
   // onDragUpdate
   <Router>
     <Header />
+    <Container>
     <DragDropContext onDragEnd={ this.onDragEnd }>
       { this.state.columnOrder.map(columnId =>{
           const column = this.state.columns[columnId]
@@ -78,10 +113,10 @@ class App extends Component {
                   tasks={tasks} 
                   />
         })
-      }; 
+      }
     </DragDropContext>
+    </Container>
   </Router>
-  
   );
 }};
 

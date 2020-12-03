@@ -7,6 +7,9 @@ const Container = styled.div`
 margin: 8px;
 border: 2px solid lightgrey;
 border-radius: 2px;
+width: 300px;
+display: flex;
+flex-direction: column;
 `;
 
 const Title = styled.h3`
@@ -17,6 +20,8 @@ const TasksList = styled.h3`
 padding: 8px;
 transition: background-color 0.2s ease;
 background-color: ${props => (props.isDraggingOver ? 'skyblue' : 'white')};
+flex-grow: 1;
+min-height: 200px;
 `;
 
 class Column extends Component {
