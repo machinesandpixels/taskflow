@@ -38,26 +38,28 @@ class App extends Component {
   // search?query=nature&per_page=1
   // style={{backgroundImage: `url(${BASE_URL})`}}
   // style={{backgroundImage: `url(${background})`}}
-  let column;
-  let tasks;
-
-  { this.state.columnOrder.map(columnId =>{
-    column = this.state.columns[columnId]
-    tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
-  }) }
 
   return (
-    <Router>
-      <Header />
-      <DragDropContext
-          // onDragStart
-          // onDragUpdate
-          onDragEnd={ this.onDragEnd }
-      />
-      <Column key={column.id} column={column} tasks={tasks} />
-      <DragDropContext/>
-    </Router>
+    // onDragStart
+  // onDragUpdate
+  <Router>
+    <Header />
+    <DragDropContext onDragEnd={ this.onDragEnd }>
+      { this.state.columnOrder.map(columnId =>{
+          const column = this.state.columns[columnId]
+          const tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
+          
+          return <Column 
+                  key={column.id} 
+                  column={column} 
+                  tasks={tasks} 
+                  />
+        })
+      }; 
+    </DragDropContext>
+  </Router>
+  
   );
-  }
-}
+}};
+
 export default App;

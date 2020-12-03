@@ -7,6 +7,7 @@ const Container = styled.div`
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
+  background-color: white;
 `;
 
 class Task extends Component {
@@ -20,7 +21,7 @@ class Task extends Component {
             <Container
               {...provided.draggableProps}
               {...provided.dragHandleProps}
-              innerRef={ provided.innerRef }
+              ref={ provided.innerRef }
             >
               { this.props.task.info }
             </Container>

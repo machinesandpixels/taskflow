@@ -26,7 +26,7 @@ class Column extends Component {
                 <Droppable droppableId={this.props.column.id}>
                     {(provided) => (
                         <TasksList
-                            innerRef={ provided.innerRef }
+                            ref={ provided.innerRef }
                         {...provided.droppableProps}
                         >
                             { 
