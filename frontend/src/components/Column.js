@@ -25,7 +25,7 @@ min-height: 200px;
 `;
 
 class Column extends Component {
-    
+
     render() {
         return(
             <Container>
@@ -41,6 +41,7 @@ class Column extends Component {
                             this.props.tasks.map((task, index) => 
                             <Task key={task.id} task={task} index={index} />) 
                             }
+                             
                             { provided.placeholder }
                         </TasksList>
                     )}
