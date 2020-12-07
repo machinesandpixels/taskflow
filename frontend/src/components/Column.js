@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from './Task';
 import styled from 'styled-components';
@@ -24,13 +24,12 @@ flex-grow: 1;
 min-height: 200px;
 `;
 
-class Column extends Component {
+const Column = ({ column, tasks }) => {
 
-    render() {
         return(
             <Container>
-                <Title>{ this.props.column.title }</Title>
-                <Droppable droppableId={this.props.column.id}>
+                <Title>{ column.title }</Title>
+                <Droppable droppableId={column.id}>
                     {(provided, snapshot) => (
                         <TasksList
                             ref={ provided.innerRef }
@@ -38,7 +37,7 @@ class Column extends Component {
                         isDraggingOver={snapshot.isDraggingOver}
                         >
                             { 
-                            this.props.tasks.map((task, index) => 
+                            tasks.map((task, index) => 
                             <Task key={task.id} task={task} index={index} />) 
                             }
                              
@@ -47,9 +46,7 @@ class Column extends Component {
                     )}
                 </Droppable>
             </Container>
-
         );
-    }
 }
 
 export default Column;

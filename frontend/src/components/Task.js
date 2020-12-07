@@ -10,12 +10,12 @@ const Container = styled.div`
   background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
 `;
 
-class Task extends Component {
-  render() {
+const Task = ({ task, index }) => {
+  
     return (
       <Draggable
-        draggableId={this.props.task.id}
-        index={this.props.index}
+        draggableId={ task.id }
+        index={ index }
         >
           { (provided, snapshot) => (
             <Container
@@ -24,12 +24,11 @@ class Task extends Component {
               ref={ provided.innerRef }
               isDragging={ snapshot.isDragging }
             >
-              { this.props.task.info }
+              { task.info }
             </Container>
           ) }
       </Draggable>
     )
-  }
 }
 
 export default Task;
