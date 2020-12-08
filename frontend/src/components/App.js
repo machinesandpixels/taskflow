@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '@atlaskit/css-reset';
 import styled from 'styled-components';
-import Column from "./components/Column";
-import Header from "./layout/Header";
+import Column from "./Column";
+import Header from "../layout/Header";
 import { DragDropContext } from 'react-beautiful-dnd';
-import seed from './seed';
+import seed from '../seed';
 
 const BASE_URL = 'https://api.pexels.com/v1/';
 
