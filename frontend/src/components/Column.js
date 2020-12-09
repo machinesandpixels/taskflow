@@ -1,21 +1,18 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from './Task';
 import styled from 'styled-components';
 
 const Container = styled.div`
 margin: 8px;
-border: 2px solid lightgrey;
-border-radius: 2px;
 width: 300px;
 display: flex;
 flex-direction: column;
 `;
-
-const Title = styled.h3`
-padding: 8px;
-`;
-
+// border: 2px solid lightgrey;
+// border-radius: 2px;
 const TasksList = styled.h3`
 padding: 8px;
 transition: background-color 0.2s ease;
@@ -28,8 +25,11 @@ const Column = ({ column, tasks }) => {
 
         return(
             <Container>
-                <Title>{ column.title }</Title>
-                <Droppable droppableId={column.id}>
+                <Card>
+                <Card.Header as="h5">{ column.title }</Card.Header>
+                <Card.Body>
+                    <Card.Text>
+                    <Droppable droppableId={column.id}>
                     {(provided, snapshot) => (
                         <TasksList
                             ref={ provided.innerRef }
@@ -45,7 +45,12 @@ const Column = ({ column, tasks }) => {
                         </TasksList>
                     )}
                 </Droppable>
-            </Container>
+                
+                </Card.Text>
+                <Button onClick={() => alert('clicked!')} variant="primary">Add Task</Button>
+                </Card.Body>
+                </Card>
+            </Container> 
         );
 }
 
