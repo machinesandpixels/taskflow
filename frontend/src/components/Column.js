@@ -26,7 +26,7 @@ const Column = ({ column, tasks }) => {
         return(
             <Container>
                 <Card>
-                <Card.Header as="h5">{ column.title }</Card.Header>
+                <Card.Header as="h3">{ column.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
                     <Droppable droppableId={column.id}>
