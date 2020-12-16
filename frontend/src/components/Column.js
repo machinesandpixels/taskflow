@@ -11,6 +11,7 @@ width: 300px;
 display: flex;
 flex-direction: column;
 `;
+// filter: drop-shadow(0 0 0.32rem rgb(101, 199, 245));
 // border: 2px solid lightgrey;
 // border-radius: 2px;
 const TasksList = styled.h3`
