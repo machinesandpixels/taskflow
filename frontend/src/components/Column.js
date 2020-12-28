@@ -1,6 +1,7 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from './Task';
 import styled from 'styled-components';
@@ -23,6 +24,11 @@ min-height: 200px;
 `;
 
 const Column = ({ column, tasks }) => {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
         return(
             <Container>
@@ -48,7 +54,26 @@ const Column = ({ column, tasks }) => {
                 </Droppable>
                 
                 </Card.Text>
-                <Button onClick={() => alert('clicked!')} variant="primary">Add Task</Button>
+                    <Button 
+                        onClick={ handleShow } 
+                        variant="primary"
+                    >
+                        Add Task
+                    </Button>
+                    <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                            Save Changes
+                        </Button>
+                    </Modal.Footer>
+                    </Modal>
                 </Card.Body>
                 </Card>
             </Container> 
