@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -6,16 +7,28 @@ const Container = styled.div`
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
+  background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
 `;
 
-class Task extends Component {
-  render() {
+const Task = ({ task, index }) => {
+  
     return (
-      <Container>
-        { this.props.task.info }
-      </Container>
+      <Draggable
+        draggableId={ task.id }
+        index={ index }
+        >
+          { (provided, snapshot) => (
+            <Container
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              ref={ provided.innerRef }
+              isDragging={ snapshot.isDragging }
+            >
+              { task.info }
+            </Container>
+          ) }
+      </Draggable>
     )
-  }
 }
 
 export default Task;
