@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+// import Col from 'react-bootstrap/Col';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from './Task';
@@ -12,8 +15,10 @@ width: 300px;
 display: flex;
 flex-direction: column;
 `;
-// filter: drop-shadow(0 0 0.32rem rgb(101, 199, 245));
+
 // border: 2px solid lightgrey;
+// filter: drop-shadow(0 0 0.32rem rgb(101, 199, 245));
+
 // border-radius: 2px;
 const TasksList = styled.h3`
 padding: 8px;
@@ -32,6 +37,9 @@ const Column = ({ column, tasks }) => {
 
         return(
             <Container>
+        {/* <Container>
+            <Row>
+                 <Col> */}
                 <Card>
                 <Card.Header as="h3">{ column.title }</Card.Header>
                 <Card.Body>
@@ -76,7 +84,10 @@ const Column = ({ column, tasks }) => {
                     </Modal>
                 </Card.Body>
                 </Card>
-            </Container> 
+                {/* </Col>
+            </Row>
+        </Container> */}
+        </Container> 
         );
 }
 
