@@ -23,7 +23,7 @@ flex-direction: column;
 const TasksList = styled.h3`
 padding: 8px;
 transition: background-color 0.2s ease;
-background-color: ${props => (props.isDraggingOver ? 'rgb(235, 233, 233)' : 'white')};
+background-color: ${props => (props.isDraggingOver ? 'skyblue' : 'white')};
 flex-grow: 1;
 min-height: 200px;
 `;
