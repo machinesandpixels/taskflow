@@ -64,17 +64,17 @@ const Column = ({ column, tasks }) => {
                 </Card.Text>
                     <Button 
                         onClick={ handleShow } 
-                        variant="primary"
+                        variant="secondary"
                     >
                         Add Task
                     </Button>
                     <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
+                    <Modal.Header>
                     <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
+                        <Button variant="primary" onClick={handleClose}>
                             Close
                         </Button>
                         <Button variant="primary" onClick={handleClose}>
