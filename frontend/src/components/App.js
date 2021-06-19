@@ -18,22 +18,24 @@ const Container = styled.div`
 
 class App extends Component {
 
-  state = seed;
+  state = {
+    seed: seed,
+    image: ''
+  };
   
-  // componentDidMount(){
+  componentDidMount(){
    
-  //   fetch(`${BASE_URL}search?query=nature&per_page=1`, {
-  //     headers: {
-  //       Authorization: `${process.env.REACT_APP_API_KEY}`
-  //     }
-  //   })
-  //     .then(res => res.json())
-  //     .then(json => json.photos.map(img => {
-  //       console.log(img.src.large);
-  //       this.setState({image: img.src.large})
-  //     }));
+    fetch(`${BASE_URL}search?query=nature&per_page=1`, {
+      headers: {
+        Authorization: `${process.env.REACT_APP_API_KEY}`
+      }
+    })
+      .then(res => res.json())
+      .then(json => json.photos.map(img => {
+        this.setState({image: img.src.large})
+      }));
     
-  // }
+  }
 
   onDragEnd = result => {
     // Updates the reordering of our column
@@ -41,8 +43,8 @@ class App extends Component {
    
     if (!destination) return;
 
-    const start = this.state.columns[source.droppableId];
-    const end = this.state.columns[destination.droppableId];
+    const start = this.state.seed.columns[source.droppableId];
+    const end = this.state.seed.columns[destination.droppableId];
     
     if (start === end){
       const newTaskIds = Array.from(start.taskIds);
@@ -55,13 +57,13 @@ class App extends Component {
       };
 
       const newState = {
-        ...this.state,
+        ...this.state.seed,
         columns: {
-          ...this.state.columns,
+          ...this.state.seed.columns,
           [newColumn.id]: newColumn,
         }
       };
-      return this.setState(newState);
+      return this.setState({seed: newState});
     }
     
     // Moving from one column to the other
@@ -81,32 +83,43 @@ class App extends Component {
       taskIds: endTaskIds,
     }
     const newState = {
-      ...this.state,
+      ...this.state.seed,
       columns: {
-        ...this.state.columns,
+        ...this.state.seed.columns,
         [newStart.id]: newStart,
         [newEnd.id]: newEnd,
       }
     };
-    this.setState(newState);
+    this.setState({seed: newState});
+  }
+
+  toggleImg = () => {
+    return 'toggleImg'
   }
   
   render() {
+    
+  //   const Img = () => {
   
-  // search?query=nature&per_page=1
-  // style={{backgroundImage: `url(${BASE_URL})`}}
-  // style={{backgroundImage: `url(${background})`}}
-
+  //     return (
+  //       <div>hello
+  //          <img src={this.state.image}></img>
+  //       </div>
+       
+  //     )
+  // }
+ 
   return (
     // onDragStart
   // onDragUpdate
   <Router>
     <Header />
+    {/* <Img /> */}
     <Container>
     <DragDropContext onDragEnd={ this.onDragEnd }>
-      { this.state.columnOrder.map(columnId =>{
-          const column = this.state.columns[columnId]
-          const tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
+      { this.state.seed.columnOrder.map(columnId =>{
+          const column = this.state.seed.columns[columnId]
+          const tasks = column.taskIds.map(taskId => this.state.seed.tasks[taskId]);
           
           return <Column 
                   key={column.id} 
