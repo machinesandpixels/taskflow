@@ -6,4 +6,10 @@ app.get('/', (req, res) => {
     res.json({taskflow: "Hello World"});
 });
 
+// Routes
+app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/tasks', require('./routes/tasks'));
+
+
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
